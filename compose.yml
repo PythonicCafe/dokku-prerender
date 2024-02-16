@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  web:
+    user: "${UID-1000}:${GID:-1000}"
+    env_file: .env
+    build:
+      context: .
+    volumes:
+      - ${PWD}:/app
+    ports:
+      - 3000:3000

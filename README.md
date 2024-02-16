@@ -41,6 +41,16 @@ dokku letsencrypt:enable $APP_NAME
 ```
 
 
+## Running locally
+
+```shell
+cp env.example .env
+docker compose up -d
+```
+
+Now, access [http://localhost:3000/https://example.net/](http://localhost:3000/https://example.net/).
+
+
 ## Available plugins
 
 - `addMetaTags`: Add `x-prerender-render-id` and `x-prerender-render-at` meta tags with debugging info

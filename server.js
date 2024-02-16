@@ -14,6 +14,7 @@ PLUGINS = {
   blacklist: prerender.blacklist,
   blockResources: prerender.blockResources,
   browserForceRestart: prerender.browserForceRestart,
+  fscache: () => { return require('prerender-plugin-fscache'); },
   httpHeaders: prerender.httpHeaders,
   removeScriptTags: prerender.removeScriptTags,
   sendPrerenderHeader: prerender.sendPrerenderHeader,

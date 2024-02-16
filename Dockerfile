@@ -9,7 +9,7 @@ RUN apt update \
   && apt clean \
   && rm -rf /var/lib/apt/lists/*
 RUN mkdir -p /app && chown -R node:node /app
-RUN yarn add prerender
+RUN yarn add prerender prerender-plugin-fscache
 
 USER node
 COPY . /app/

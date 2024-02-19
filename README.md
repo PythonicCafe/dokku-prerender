@@ -4,6 +4,14 @@ This repository has a `Dockerfile` and instructions for running [prerender](http
 [Dokku](https://dokku.com/). You can easily enable official plugins and our
 [prerender-plugin-fscache](https://www.npmjs.com/package/prerender-plugin-fscache).
 
+Note that pre-rendering is NOT the same as server-side rendering: pre-rendering just helps you get better SEO by
+serving a pre-rendered HTML version with data filled in, but it's not supposed to replace the user experience in the
+browser. To make it work you'll need:
+- A deployed prerender (this repository will help you deploy it to Dokku)
+- Change your website configuration to serve static files to regular users but reverse proxy to your prerender instance
+  when the user-agent is from a search engine or social media robot (see [Configuring Nginx](#configuring-nginx) for an
+  example)
+
 Run on your Dokku server:
 
 ```shell
@@ -76,3 +84,10 @@ Now, access [http://localhost:3000/https://example.net/](http://localhost:3000/h
 - `removeScriptTags`: Remove `<script>` (except for type='application/ld+json') and `<link rel="import">` tags
 - `sendPrerenderHeader`: Add `X-Prerender: 1` to request headers
 - `whitelist`: Render only pages from domains in `ALLOWED_DOMAINS`
+
+
+## Configuring Nginx
+
+If you're serving your static file on Nginx, you'll need to configure it to proxy the robot requests through your
+prerender instance. Check the file [nginx-default.conf](nginx-default.conf) for an example (I curated a list of 68
+robots, including search engines, social media and SEO metrics).

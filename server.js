@@ -29,7 +29,8 @@ const server = prerender(
       '--blink-settings=imagesEnabled=false',
       '--disable-dev-shm-usage', // Avoid `net::ERR_INSUFFICIENT_RESOURCES`
     ],
-    logRequests: true,
+    logRequests: process.env.PRERENDER_LOG_REQUESTS === 'true',
+    port: process.env.PORT || 3000,
   }
 );
 for (let plugin of ENABLED_PLUGINS) {

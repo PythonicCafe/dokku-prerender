@@ -9,10 +9,10 @@ Note that pre-rendering is NOT the same as server-side rendering: pre-rendering 
 serving a pre-rendered HTML version with data filled in, but it's not supposed to replace the user experience in the
 browser. To make it work you'll need:
 
-- A deployed prerender (this repository will help you deploy it to Dokku)
-- Change your website configuration to serve static files to regular users but reverse proxy to your prerender instance
-  when the user-agent is from a search engine or social media robot (see [Configuring Nginx](#configuring-nginx) for an
-  example)
+- A deployed prerender (this repository will help you deploy an instance to Dokku)
+- Change your Web server configuration to serve static files to regular users but reverse proxy to your prerender
+  instance when the user-agent is from a search engine or social media robot. If you're serving your frontend using
+  nginx, see [Configuring Nginx](#configuring-nginx) for an example.
 
 Run on your Dokku server:
 
@@ -56,10 +56,11 @@ git remote add dokku dokku@<server-ip>:<app-name>
 git push dokku main
 ```
 
-Finally, activate Let's Encrypt by executing on the server:
+Finally, generate the SSL certificate using Let's Encrypt and scale the number of containers if needed:
 
 ```shell
 dokku letsencrypt:enable $APP_NAME
+dokku ps:scale $APP_NAME web=2
 ```
 
 ## Running locally

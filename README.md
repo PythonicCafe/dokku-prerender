@@ -7,6 +7,7 @@ our [prerender-plugin-fscache](https://www.npmjs.com/package/prerender-plugin-fs
 Note that pre-rendering is NOT the same as server-side rendering: pre-rendering just helps you get better SEO by
 serving a pre-rendered HTML version with data filled in, but it's not supposed to replace the user experience in the
 browser. To make it work you'll need:
+
 - A deployed prerender (this repository will help you deploy it to Dokku)
 - Change your website configuration to serve static files to regular users but reverse proxy to your prerender instance
   when the user-agent is from a search engine or social media robot (see [Configuring Nginx](#configuring-nginx) for an
@@ -60,7 +61,6 @@ Finally, activate Let's Encrypt by executing on the server:
 dokku letsencrypt:enable $APP_NAME
 ```
 
-
 ## Running locally
 
 ```shell
@@ -69,7 +69,6 @@ make start # or: `docker compose build && docker compose up -d`
 ```
 
 Now, access [http://localhost:3000/https://example.net/](http://localhost:3000/https://example.net/).
-
 
 ## Available Plugins
 
@@ -85,7 +84,6 @@ Now, access [http://localhost:3000/https://example.net/](http://localhost:3000/h
 - `sendPrerenderHeader`: Add `X-Prerender: 1` to request headers
 - `whitelist`: Render only pages from domains in `ALLOWED_DOMAINS`
 
-
 ## Utilities
 
 The directory `utils` has some useful Python scripts:
@@ -94,7 +92,6 @@ The directory `utils` has some useful Python scripts:
   to the prerender server, so you end up with all of them cached.
 - `refresh_facebook_cache.py`: scrape [Facebook Share Debugger](https://developers.facebook.com/tools/debug/) to
   refresh URLs from a text file. Will help creating previews when people share your links.
-
 
 ## Configuring Nginx
 

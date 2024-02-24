@@ -1,12 +1,7 @@
 const prerender = require('prerender');
+const { getLogger } = require('./logging');
 
-function log(...args) {
-  if (process.env.DISABLE_LOGGING) {
-    return;
-  }
-  console.log(new Date().toISOString(), ...args);
-}
-
+const log = getLogger('main');
 ENABLED_PLUGINS = (process.env.ENABLED_PLUGINS && process.env.ENABLED_PLUGINS.split(',')) || [];
 PLUGINS = {
   addMetaTags: prerender.addMetaTags,

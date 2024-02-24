@@ -65,7 +65,7 @@ dokku letsencrypt:enable $APP_NAME
 
 ```shell
 cp env.example .env
-docker compose up -d
+make start # or: `docker compose build && docker compose up -d`
 ```
 
 Now, access [http://localhost:3000/https://example.net/](http://localhost:3000/https://example.net/).

@@ -86,6 +86,16 @@ Now, access [http://localhost:3000/https://example.net/](http://localhost:3000/h
 - `whitelist`: Render only pages from domains in `ALLOWED_DOMAINS`
 
 
+## Utilities
+
+The directory `utils` has some useful Python scripts:
+
+- `warmup_cache.py`: from a prerender instance URL and a text file with URLs, this script will request all these URLs
+  to the prerender server, so you end up with all of them cached.
+- `refresh_facebook_cache.py`: scrape [Facebook Share Debugger](https://developers.facebook.com/tools/debug/) to
+  refresh URLs from a text file. Will help creating previews when people share your links.
+
+
 ## Configuring Nginx
 
 If you're serving your static file on Nginx, you'll need to configure it to proxy the robot requests through your

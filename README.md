@@ -1,8 +1,8 @@
 # dokku-prerender
 
 This repository has a `Dockerfile` and instructions for running [prerender](https://github.com/prerender/prerender) on
-[Dokku](https://dokku.com/). You can easily enable official plugins and our
-[prerender-plugin-fscache](https://www.npmjs.com/package/prerender-plugin-fscache).
+[Dokku](https://dokku.com/). You can easily enable official plugins (including a fixed version of `blockRequests`) and
+our [prerender-plugin-fscache](https://www.npmjs.com/package/prerender-plugin-fscache).
 
 Note that pre-rendering is NOT the same as server-side rendering: pre-rendering just helps you get better SEO by
 serving a pre-rendered HTML version with data filled in, but it's not supposed to replace the user experience in the

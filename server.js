@@ -7,7 +7,8 @@ PLUGINS = {
   addMetaTags: prerender.addMetaTags,
   basicAuth: prerender.basicAuth,
   blacklist: prerender.blacklist,
-  blockResources: prerender.blockResources,
+  // We use a fixed version of `blockResources`. Details: <https://github.com/prerender/prerender/pull/778>
+  blockResources: () => { return require('./blockResources'); },
   browserForceRestart: prerender.browserForceRestart,
   fscache: () => { return require('prerender-plugin-fscache'); },
   httpHeaders: prerender.httpHeaders,

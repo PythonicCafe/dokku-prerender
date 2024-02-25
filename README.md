@@ -22,6 +22,7 @@ ADMIN_EMAIL="admin@example.net"
 ALLOWED_DOMAINS="example.net"  # Change if needed (like has other domains/subdomains)
 APP_DOMAIN="prerender.example.net"
 APP_NAME="myprerender"
+BROWSER_TRY_RESTART_PERIOD="3600000"
 CACHE_PATH="/var/cache/prerender"  # Data path inside container for caching
 CACHE_STATUS_CODES="200,301,302,303,304,307,308,404"  # Status codes where cache works (only GET requests are cached)
 CACHE_TTL="86400"  # Cache time-to-live (in seconds)
@@ -37,10 +38,11 @@ dokku letsencrypt:set $APP_NAME email $ADMIN_EMAIL
 
 # Now, let's go to the prerender/plugin-specific env vars:
 dokku config:set --no-restart $APP_NAME ALLOWED_DOMAINS=$ALLOWED_DOMAINS # Only if you'd like to enable domain allow list
+dokku config:set --no-restart $APP_NAME BROWSER_TRY_RESTART_PERIOD=$BROWSER_TRY_RESTART_PERIOD
 dokku config:set --no-restart $APP_NAME CACHE_PATH=$CACHE_PATH # Only if you'd like to enable cache
+dokku config:set --no-restart $APP_NAME CACHE_STATUS_CODES=$CACHE_STATUS_CODES
 dokku config:set --no-restart $APP_NAME CACHE_TTL=$CACHE_TTL # Only if you'd like to enable cache
 dokku config:set --no-restart $APP_NAME ENABLED_PLUGINS=$ENABLED_PLUGINS
-dokku config:set --no-restart $APP_NAME CACHE_STATUS_CODES=$CACHE_STATUS_CODES
 dokku config:set --no-restart $APP_NAME PRERENDER_LOG_REQUESTS=$PRERENDER_LOG_REQUESTS
 ```
 

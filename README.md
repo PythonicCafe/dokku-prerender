@@ -19,14 +19,15 @@ Run on your Dokku server:
 ```shell
 # Change these variables as needed
 ADMIN_EMAIL="admin@example.net"
+ALLOWED_DOMAINS="example.net"  # Change if needed (like has other domains/subdomains)
 APP_DOMAIN="prerender.example.net"
 APP_NAME="myprerender"
-ALLOWED_DOMAINS="example.net"  # Change if needed (like has other domains/subdomains)
-ENABLED_PLUGINS="addMetaTags,blockResources,browserForceRestart,fscache,removeScriptTags,whitelist"
-STORAGE_PATH="/var/lib/dokku/data/storage/$APP_NAME"  # Data path on host machine for caching
 CACHE_PATH="/var/cache/prerender"  # Data path inside container for caching
 CACHE_STATUS_CODES="200,301,302,303,304,307,308,404"  # Status codes where cache works (only GET requests are cached)
 CACHE_TTL="86400"  # Cache time-to-live (in seconds)
+ENABLED_PLUGINS="addMetaTags,blockResources,browserForceRestart,fscache,removeScriptTags,whitelist"
+PRERENDER_LOG_REQUESTS="false"  # Prerender is too noisy (enabling it is useful for debugging)
+STORAGE_PATH="/var/lib/dokku/data/storage/$APP_NAME"  # Data path on host machine for caching
 
 dokku apps:create $APP_NAME
 dokku domains:set $APP_NAME $APP_DOMAIN
@@ -40,6 +41,7 @@ dokku config:set --no-restart $APP_NAME CACHE_PATH=$CACHE_PATH # Only if you'd l
 dokku config:set --no-restart $APP_NAME CACHE_TTL=$CACHE_TTL # Only if you'd like to enable cache
 dokku config:set --no-restart $APP_NAME ENABLED_PLUGINS=$ENABLED_PLUGINS
 dokku config:set --no-restart $APP_NAME CACHE_STATUS_CODES=$CACHE_STATUS_CODES
+dokku config:set --no-restart $APP_NAME PRERENDER_LOG_REQUESTS=$PRERENDER_LOG_REQUESTS
 ```
 
 > Note that prerender reads some environment variables and you can set them with

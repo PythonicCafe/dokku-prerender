@@ -1211,7 +1211,7 @@ prerender-plugin-fscache@1.0.1:
 
 prerender@PythonicCafe/prerender#enhancement/connection:
   version "5.20.2"
-  resolved "https://codeload.github.com/PythonicCafe/prerender/tar.gz/20aefcf0c975bbe46a8ac4fb807546c68ca2cac2"
+  resolved "https://codeload.github.com/PythonicCafe/prerender/tar.gz/d49ceac453fc490415ed59967943bb50c8537129"
   dependencies:
     body-parser "^1.19.0"
     chrome-remote-interface "^0.30.0"

@@ -40,7 +40,7 @@ const server = prerender({
 });
 
 for (let plugin of ENABLED_PLUGINS) {
-  if ((!plugin) in PLUGINS) {
+  if (!(plugin in PLUGINS)) {
     process.stderr.write(`ERROR: plugin ${plugin} not found.`);
     process.exit(1);
   }

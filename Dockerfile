@@ -11,7 +11,7 @@ RUN mkdir -p /app && chown -R node:node /app
 WORKDIR /app
 USER node
 
-COPY package.json /app/
+COPY package.json yarn.lock /app/
 RUN cd /app && yarn install
 
 COPY . /app/

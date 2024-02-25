@@ -7,6 +7,6 @@ services:
     build:
       context: .
     volumes:
-      - ${PWD}:/app
+      - ${PWD}/cache:/app/cache
     ports:
       - 3000:3000

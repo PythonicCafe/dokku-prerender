@@ -58,7 +58,7 @@ with urls_filename.open() as fobj, done_filename.open(mode="a+") as outfobj:
                     time.sleep(wait_load_time)
                 response_code = int(browser.find_by_xpath("//tr[contains(.//td//text(), 'Response Code')]/td[2]")[0].text)
                 answers.append((url, response_code))
-                if response_code > 499:
+                if response_code in (206, 418, 499) or response_code > 499:
                     browser.find_by_text("Scrape Again").first.click()
                     while browser.find_by_xpath("//span[@role = 'progressbar']")[1].visible:
                         time.sleep(wait_load_time)

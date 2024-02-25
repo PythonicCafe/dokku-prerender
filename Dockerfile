@@ -6,10 +6,13 @@ RUN apt update \
   && apt purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
   && apt clean \
   && rm -rf /var/lib/apt/lists/*
-RUN yarn add pm2 chrome-remote-interface@0.33.0 prerender@5.20.2 prerender-plugin-fscache@1.0.1
-RUN mkdir -p /app && chown -R node:node /app
 
-USER node
+RUN mkdir -p /app && chown -R node:node /app
 WORKDIR /app
+USER node
+
+COPY package.json /app/
+RUN cd /app && yarn install
+
 COPY . /app/
-CMD ["yarn", "pm2-runtime", "start", "/app/server.js"]
+CMD ["yarn", "run", "pm2-runtime", "start", "/app/server.js"]

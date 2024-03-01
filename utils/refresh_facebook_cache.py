@@ -11,11 +11,13 @@ from tqdm import tqdm
 parser = argparse.ArgumentParser()
 parser.add_argument("--browser", default="firefox")
 parser.add_argument("--wait-load-time", type=float, default=0.5)
-parser.add_argument("--interval-between-actions", type=float, default=5.0)
+parser.add_argument("--interval-between-actions", type=float, default=15.0)
+parser.add_argument("--interval-if-ok", type=float, default=3.0)
 parser.add_argument("urls_filename", type=Path, help="Text file with one URL per line")
 parser.add_argument("done_filename", type=Path, help="File to be created, storing URLs already refreshed")
 args = parser.parse_args()
 wait_load_time = args.wait_load_time
+interval_if_ok = args.interval_if_ok
 interval_between_actions = args.interval_between_actions
 urls_filename = args.urls_filename
 done_filename = args.done_filename
@@ -71,6 +73,7 @@ with urls_filename.open() as fobj, done_filename.open(mode="a+") as outfobj:
                     time.sleep(interval_between_actions)
                 elif response_code == 200:
                     outfobj.write(f"{url}\n")
+                    time.sleep(interval_if_ok)
             done.add(url)
         except KeyboardInterrupt:
             break

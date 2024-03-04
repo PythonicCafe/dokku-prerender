@@ -47,14 +47,16 @@ module.exports = {
     req.prerender.tab.Network.requestIntercepted(
       ({ interceptionId, request }) => {
         let shouldBlock = false;
-        blockedResources.forEach((substring) => {
-          if (request.url.indexOf(substring) >= 0) {
-            shouldBlock = true;
-          }
-        });
+
+        if (req.prerender.url !== request.url) {
+          blockedResources.forEach((substring) => {
+            if (request.url.indexOf(substring) >= 0) {
+              shouldBlock = true;
+            }
+          });
+        }
 
         let interceptOptions = { interceptionId };
-
         if (shouldBlock) {
           interceptOptions.errorReason = "Aborted";
         }

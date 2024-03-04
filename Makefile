@@ -5,7 +5,7 @@ clean-build:
 	docker compose build --no-cache
 
 logs:
-	docker compose logs -tf
+	docker compose logs -f
 
 start: build
 	docker compose up -d

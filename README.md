@@ -71,8 +71,11 @@ dokku ps:scale $APP_NAME web=2
 
 ```shell
 cp env.example .env
-make start # or: `docker compose build && docker compose up -d`
+make start
 ```
+
+The command below will build the container image using `docker compose`, configure directory permissions for cache
+volume and run the container.
 
 Now, access [http://localhost:3000/https://example.net/](http://localhost:3000/https://example.net/).
 

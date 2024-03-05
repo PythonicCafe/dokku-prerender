@@ -8,6 +8,10 @@ logs:
 	docker compose logs -f
 
 start: build
+	userID=$${UID:-1000}
+	groupID=$${UID:-1000}
+	mkdir -p cache
+	chown -R $$userID:$$groupID cache
 	docker compose up -d
 
 stop:

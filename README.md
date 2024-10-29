@@ -43,6 +43,7 @@ dokku config:set --no-restart $APP_NAME CACHE_PATH=$CACHE_PATH # Only if you'd l
 dokku config:set --no-restart $APP_NAME CACHE_STATUS_CODES=$CACHE_STATUS_CODES
 dokku config:set --no-restart $APP_NAME CACHE_TTL=$CACHE_TTL # Only if you'd like to enable cache
 dokku config:set --no-restart $APP_NAME ENABLED_PLUGINS=$ENABLED_PLUGINS
+dokku config:set --no-restart $APP_NAME PAGE_LOAD_TIMEOUT=30000
 dokku config:set --no-restart $APP_NAME PRERENDER_LOG_REQUESTS=$PRERENDER_LOG_REQUESTS
 ```
 

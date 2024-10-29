@@ -1,12 +1,10 @@
-version: "3.8"
-
 services:
   web:
     user: "${UID-1000}:${GID:-1000}"
-    env_file: .env
+    env_file: docker/env/web
     build:
       context: .
     volumes:
-      - ${PWD}/cache:/app/cache
+      - ${PWD}/docker/data/web:/app/cache
     ports:
       - 3000:3000

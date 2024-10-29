@@ -1,3 +1,6 @@
+docker/data/
+docker/env/*.local
+
 # Logs
 logs
 *.log

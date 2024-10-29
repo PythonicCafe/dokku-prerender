@@ -2,7 +2,7 @@
   "dependencies": {
     "chrome-remote-interface": "0.33.0",
     "pm2": "5.3.1",
-    "prerender": "PythonicCafe/prerender#enhancement/connection",
+    "prerender": "prerender/prerender#e83e20de824b7d056dae3a698bd5284a465df6b5",
     "prerender-plugin-fscache": "1.0.3"
   }
 }
